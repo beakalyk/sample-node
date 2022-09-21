@@ -16,7 +16,7 @@ jobs:
 
              command: |
             docker build -t simple-node .
-            echo "--------- The images is Building ------------"
+
 
             docker tag simple-node beakalyk/simple-node:latest
             echo "-------- All images succesfully built----------"
