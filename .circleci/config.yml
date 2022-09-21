@@ -4,23 +4,23 @@ jobs:
     docker:
     - image: Node:16
 
-    steps:
+  steps:
       - checkout
-        - run:
+    - run:
           # Builds a docker image to push to Docker Hub
 				   # Tag (-t) pattern is below, where CircleCI 
 				   # to get the Dockerfile from the current directory.
            # <docker_hub_username/docker-hub-password:version>.
            name: Build Docker image
            command: docker build -t simple-node .
-        - run:
+    - run:
           # Builds a docker image to push to Docker Hub
 				   # Tag (-t) pattern is below, where CircleCI 
 				   # to get the Dockerfile from the current directory.
            # <docker_hub_username/docker-hub-password:version>.
            name: Build Docker image
            command: docker tag simple-node beakalyk/simple-node:latest
-         run:
+    - run:
         # Pushes the Docker image you created to the Docker Hub.
         # Replace khabdrick/circleci-tutorial:v1 with the 
 				# <docker_hub_username/docker-hub-password:version> you used to build the image above
