@@ -12,21 +12,15 @@ jobs:
       - checkout
       - run:
             name: Build Docker image
-            command: 
+       
 
              command: |
             docker build -t simple-node .
-
-
             docker tag simple-node beakalyk/simple-node:latest
             echo "-------- All images succesfully built----------"
-
             echo " ------- login in to hub--------"
-
             docker login -u akaabe@hotmail.com -p 6D&QNC9HXA5o
-
             echo "-------------- Pushing images to dockerhub-------"
-
             docker push beakalyk/simple-node beakalyk
 workflows:
   default:
