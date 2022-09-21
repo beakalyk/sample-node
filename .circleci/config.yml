@@ -12,17 +12,14 @@ jobs:
       - checkout
       - run:
             name: Build Docker image
-           command: docker build -t simple-node .
+            command: docker build -t simple-node .
       - run:
             name: tag to Docker Hub
-           command: docker tag simple-node beakalyk/simple-node:latest     
+            command: docker tag simple-node beakalyk/simple-node:latest     
             
       - run:
-        # Pushes the Docker image you created to the Docker Hub.
-        # Replace khabdrick/circleci-tutorial:v1 with the 
-				# <docker_hub_username/docker-hub-password:version> you used to build the image above
-          name: Push to Docker Hub
-          command: |
+            name: Push to Docker Hub
+            command: |
             docker login -u akaabe@hotmail.com -p 6D&QNC9HXA5o
             docker push beakalyk/simple-node beakalyk
             echo "-------- All images succesfully built----------"
