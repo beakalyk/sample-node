@@ -12,9 +12,7 @@ jobs:
       - checkout
       - run:
             name: Build Docker image
-       
-
-             command: |
+            command: |
             docker build -t simple-node .
             docker tag simple-node beakalyk/simple-node:latest
             echo "-------- All images succesfully built----------"
