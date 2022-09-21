@@ -1,30 +1,36 @@
-version: 2
-jobs:
-  build:
-    docker:
-    - image: Node:16
+version: 3.1
 
-  steps:
+jobs:
+  lint-app:
+    docker:
+      - image: circleci/node:16.17.0
+    steps:
       - checkout
-    - run:
-          # Builds a docker image to push to Docker Hub
-				   # Tag (-t) pattern is below, where CircleCI 
-				   # to get the Dockerfile from the current directory.
-           # <docker_hub_username/docker-hub-password:version>.
-           name: Build Docker image
-           command: docker build -t simple-node .
-    - run:
-          # Builds a docker image to push to Docker Hub
-				   # Tag (-t) pattern is below, where CircleCI 
-				   # to get the Dockerfile from the current directory.
-           # <docker_hub_username/docker-hub-password:version>.
-           name: Build Docker image
-           command: docker tag simple-node beakalyk/simple-node:latest
-    - run:
-        # Pushes the Docker image you created to the Docker Hub.
-        # Replace khabdrick/circleci-tutorial:v1 with the 
-				# <docker_hub_username/docker-hub-password:version> you used to build the image above
-          name: Push to Docker Hub
-          command: |
+  build-docker:
+    machine: true
+    steps:
+      - checkout
+      - run:
+            name: Build Docker image
+            command: 
+
+             command: |
+            docker build -t simple-node .
+            echo "--------- The images is Building ------------"
+
+            docker tag simple-node beakalyk/simple-node:latest
+            echo "-------- All images succesfully built----------"
+
+            echo " ------- login in to hub--------"
+
             docker login -u akaabe@hotmail.com -p 6D&QNC9HXA5o
+
+            echo "-------------- Pushing images to dockerhub-------"
+
             docker push beakalyk/simple-node beakalyk
+workflows:
+  default:
+    jobs:
+      - lint-app
+      - build-docker:
+          requires: [lint-app]
