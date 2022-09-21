@@ -13,10 +13,10 @@ jobs:
       
       - run:
             name: Build Docker image
-           command: docker build -t simple-node .
+            command: docker build -t simple-node .
       - run:
             name: tag to Docker Hub
-           command: docker tag simple-node beakalyk/simple-node:latest     
+            command: docker tag simple-node beakalyk/simple-node:latest     
             
       - run:
         # Pushes the Docker image you created to the Docker Hub.
