@@ -13,4 +13,4 @@ jobs:
     steps:
       - checkout
       - node/install-packages # Utilize commands in steps
-	  - docker ps
+	    - docker ps
