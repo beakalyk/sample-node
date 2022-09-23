@@ -22,6 +22,7 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
+          systemctl start docker
           docker build -t simple-node .
              
 
