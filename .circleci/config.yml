@@ -4,7 +4,7 @@ orbs:
   example-job:
     docker:
       # replace with your preferred image
-      - image: cimg/base:stable
+      - image: cimg/node:16.17.0
     steps:
       - docker/build:
           image: simple-node . 
