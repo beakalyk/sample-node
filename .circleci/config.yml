@@ -10,7 +10,7 @@ jobs:
         auth:
           username: beakalyk
           password: 6D&QNC9HXA5o # context / project UI env-var reference
-    steps:
-      - checkout
-      - node/install-packages # Utilize commands in steps
-	    - docker --version # print the version for logging
+   - checkout
+      - run: |
+          docker --version # print the version for logging
+          
