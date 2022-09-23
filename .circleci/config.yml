@@ -31,8 +31,6 @@ jobs:
     steps:
       - docker/build:
           image: simple-node .
-      - docker/tag:
-          tag: "beakalyk/simple-node:latest"
       - docker/push:
           image: beakalyk/simple-node:latest             
 
