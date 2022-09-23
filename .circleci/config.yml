@@ -39,3 +39,4 @@ workflows:
   my-custom-workflow:
     jobs:
       - my-job-name
+      -example-job 
