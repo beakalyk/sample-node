@@ -22,8 +22,8 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
-      - docker/build:
-          image: simple-node .           
+          docker build -t simple-node .
+             
 
   
 workflows:
