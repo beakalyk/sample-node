@@ -11,7 +11,7 @@ executors:
 jobs:
   my-job-name:
     environment:
-      DOCKER_HUB_USER: akaabe@hotmail.com
+      DOCKER_HUB_USER: beakalyk 
       DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
     executor: my-custom-executor
     steps:
@@ -21,6 +21,7 @@ jobs:
             docker --version # print the version for logging
             docker build -t simple-node .
             docker tag simple-node beakalyk/sample-node
+            docker push beakalyk/simple-node
           
 
 workflows:
