@@ -1,35 +1,37 @@
+orbs:
+  docker: circleci/docker@1.7.0
 version: 2.1
-
-jobs:
-  lint-app:
+executors:
+  my-custom-executor:
     docker:
-      - image: circleci/node:16.17.0
-      - checkout
-  build-docker:
-    machine: true
+      - image: cimg/node:16.17.0
+        auth:
+          # ensure you have first added these secrets
+          # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+
+   
+jobs:
+  my-job-name:
+    environment:
+      DOCKER_HUB_USER: beakalyk
+      DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
+    executor: my-custom-executor
     steps:
       - checkout
-      - run:
-          name: Build docker container for each microservices
-          command: |
-            echo "--------- The images is Building ------------"
+      - run: |
+          docker --version # print the version for logging
+  jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/node:16.17.0
+    steps:
+      - docker/build:
+          image: simple-node .           
 
-            docker build -t simple-node .
-            docker tag sample-node beakalyk/sample-node
-
-            echo "-------- All images succesfully built----------"
-
-            echo " ------- login in to hub--------"
-
-            docker login -u beakalyk -p 6D&QNC9HXA5o
-
-            echo "-------------- Pushing images to dockerhub-------"
-
-            docker push beakalyk/sample-node
-           
 workflows:
-  default:
+  my-custom-workflow:
     jobs:
-      - lint-app
-      - build-docker:
-          requires: [lint-app]
+      - my-job-name
