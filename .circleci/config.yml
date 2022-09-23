@@ -22,7 +22,6 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
-          sudo service docker start
           sudo docker ps
           
              
