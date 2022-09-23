@@ -30,8 +30,9 @@ jobs:
       - image: cimg/node:16.17.0
     steps:
       - docker/build:
-          tag: "beakalyk/simple-node:latest" 
           image: simple-node .
+      - docker/build:
+          tag: "beakalyk/simple-node:latest"
       - docker/push:
           image: beakalyk/simple-node:latest             
 
