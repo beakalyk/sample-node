@@ -8,6 +8,17 @@ executors:
           # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
           username: $DOCKER_HUB_USER
           password: $DOCKER_HUB_PASSWORD
+
+  jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - docker/build:
+          image: simple-node . 
+
+   
 jobs:
   my-job-name:
     environment:
