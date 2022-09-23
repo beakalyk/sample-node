@@ -1,5 +1,5 @@
 version: 2.1
-executors:
+job:
   my-custom-executor:
     docker:
       - image: cimg/node:16.17.0
@@ -16,11 +16,14 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
-      - run: |
-            docker --version 
-            docker build -t simple-node .
-            docker tag simple-node beakalyk/sample-node
-            docker push beakalyk/simple-node
+      - run: 
+            name:buliding 
+            command: |  
+            docker --version
+            echo "installing" 
+            #docker build -t simple-node .
+            #docker tag simple-node beakalyk/sample-node
+            #docker push beakalyk/simple-node
           
 
 workflows:
