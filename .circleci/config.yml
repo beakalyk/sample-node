@@ -22,15 +22,10 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
-  jobs:
-  example-job:
-    docker:
-      # replace with your preferred image
-      - image: cimg/node:16.17.0
-    steps:
       - docker/build:
           image: simple-node .           
 
+  
 workflows:
   my-custom-workflow:
     jobs:
