@@ -6,8 +6,8 @@ executors:
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
+          username: akaabe@hotmail.com
+          password: 6D&QNC9HXA5o
 jobs:
   my-job-name:
     environment:
