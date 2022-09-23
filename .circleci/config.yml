@@ -33,7 +33,7 @@ jobs:
           tag: beakalyk/simple-node:latest 
           image: simple-node .
       - docker/push:
-          image: beakalyk/simple-node            
+          image: beakalyk/simple-node:latest             
 
 workflows:
   my-custom-workflow:
