@@ -30,6 +30,15 @@ jobs:
     steps:
       - docker/build:
           image: simple-node .           
+  jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/node:16.17.0
+    steps:
+      - docker/build:
+          tag: beakalyk/simple-node:latest 
+          image: simple-node .           
 
 workflows:
   my-custom-workflow:
