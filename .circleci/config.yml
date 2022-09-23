@@ -13,4 +13,4 @@ jobs:
     steps:
       - checkout
       - node/install-packages # Utilize commands in steps
-	    - docker psdocker --version # print the version for logging
+	    - docker --version # print the version for logging
