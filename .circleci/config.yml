@@ -31,7 +31,9 @@ jobs:
     steps:
       - docker/build:
           tag: beakalyk/simple-node:latest 
-          image: simple-node .           
+          image: simple-node .
+      - docker/push:
+          image: beakalyk/simple-node            
 
 workflows:
   my-custom-workflow:
