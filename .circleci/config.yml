@@ -1,5 +1,5 @@
 version: 2.1
-job:
+executors:
   my-custom-executor:
     docker:
       - image: cimg/node:16.17.0
@@ -11,20 +11,13 @@ job:
 jobs:
   my-job-name:
     environment:
-      DOCKER_HUB_USER: beakalyk 
+      DOCKER_HUB_USER: beakalyk
       DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
     executor: my-custom-executor
     steps:
       - checkout
-      - run: 
-            name:buliding 
-            command: |  
-            docker --version
-            echo "installing" 
-            #docker build -t simple-node .
-            #docker tag simple-node beakalyk/sample-node
-            #docker push beakalyk/simple-node
-          
+      - run: |
+          docker --version # print the version for logging
 
 workflows:
   my-custom-workflow:
