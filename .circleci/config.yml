@@ -1,17 +1,33 @@
 orbs:
   docker: circleci/docker@1.7.0
-
-jobs:
-  example-job:
+version: 2.1
+executors:
+  my-custom-executor:
     docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - docker/build:
-          tag: beakalyk/simple-node:latest 
-          image: simple-node .  
+      - image: cimg/node:16.17.0
+        auth:
+          # ensure you have first added these secrets
+          # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
 
+   
+jobs:
+  my-job-name:
+    environment:
+      DOCKER_HUB_USER: beakalyk
+      DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          docker --version # print the version for logging
+          docker ps
+          
+             
+
+  
 workflows:
-  example-workflow:
+  my-custom-workflow:
     jobs:
-      - example-job
+      - my-job-name
