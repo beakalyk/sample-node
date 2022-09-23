@@ -1,34 +1,16 @@
-orbs:
-  docker: circleci/docker@1.7.0
 version: 2.1
-executors:
-  my-custom-executor:
+
+orbs:
+  node: circleci/node@x.y #orb version
+
+jobs:
+  test:
     docker:
       - image: cimg/node:16.17.0
         auth:
-          # ensure you have first added these secrets
-          # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
-
-   
-jobs:
-  my-job-name:
-    environment:
-      DOCKER_HUB_USER: beakalyk
-      DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
-    executor: my-custom-executor
+          username: beakalyk
+          password: 6D&QNC9HXA5o # context / project UI env-var reference
     steps:
       - checkout
-      - run: |
-          docker --version # print the version for logging
-          sudo service docker restart
-          sudo docker ps
-          
-             
-
-  
-workflows:
-  my-custom-workflow:
-    jobs:
-      - my-job-name
+      - node/install-packages # Utilize commands in steps
+	  - docker ps
