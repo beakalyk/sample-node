@@ -1,16 +1,17 @@
-version: 2.1
-
 orbs:
-  node: circleci/node:16.17.0  #orb version
+  docker: circleci/docker@1.7.0
 
 jobs:
-  test:
+  example-job:
     docker:
-      - image: cimg/node:16.17.0
-        auth:
-          username: beakalyk
-          password: 6D&QNC9HXA5o # context / project UI env-var reference
-   - checkout
-      - run: |
-          docker --version # print the version for logging
-          
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - docker/build:
+          tag: beakalyk/simple-node:latest 
+          image: simple-node .  
+
+workflows:
+  example-workflow:
+    jobs:
+      - example-job
