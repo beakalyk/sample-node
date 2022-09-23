@@ -17,8 +17,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          # echo Hello, World!
-            docker --version # print the version for logging
+            docker --version 
             docker build -t simple-node .
             docker tag simple-node beakalyk/sample-node
             docker push beakalyk/simple-node
