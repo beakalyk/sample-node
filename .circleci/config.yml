@@ -11,7 +11,7 @@ executors:
 jobs:
   my-job-name:
     environment:
-      password: 6D&QNC9HXA5o
+      password: '6D&QNC9HXA5o'
       : 
     executor: my-custom-executor
     steps:
