@@ -6,21 +6,22 @@ executors:
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/beakalyk/sample-node/environment-variables
-          username: 'akaabe@hotmail.com'
-          password: '6D&QNC9HXA5o'
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
 jobs:
   my-job-name:
     environment:
-      password: '6D&QNC9HXA5o'
-      : 
+      DOCKER_HUB_USER: akaabe@hotmail.com
+      DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
     executor: my-custom-executor
     steps:
       - checkout
       - run: |
           # echo Hello, World!
-          docker --version # print the version for logging
-          docker build -t simple-node .
-          docker tag simple-node beakalyk/sample-node
+            docker --version # print the version for logging
+            docker build -t simple-node .
+            docker tag simple-node beakalyk/sample-node
+          
 
 workflows:
   my-custom-workflow:
