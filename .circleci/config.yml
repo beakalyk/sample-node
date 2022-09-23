@@ -22,6 +22,8 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
+          sudo service docker start
+          sudo docker run hello-world
           systemctl start docker
           docker build -t simple-node .
              
