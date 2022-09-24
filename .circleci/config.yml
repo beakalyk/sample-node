@@ -22,8 +22,6 @@ jobs:
       - checkout
       - run: |
           docker --version # print the version for logging
-          sudo systemctl unmask docker
-          ps -p 1 -o comm=
           sudo dockerd
           
              
