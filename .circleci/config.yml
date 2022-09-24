@@ -23,7 +23,7 @@ jobs:
       - run: |
           docker --version # print the version for logging
           sudo systemctl unmask docker
-          systemctl status docker
+          ps -p 1 -o comm=
           
              
 
