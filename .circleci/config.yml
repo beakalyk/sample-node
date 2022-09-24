@@ -17,6 +17,7 @@ jobs:
       # build and push Docker image
       - run: |
           docker build -t sample-node .
-          echo "login"
           docker images
+          docker tag sample-node beakalyk/sample-node
+          docker push beakalyk/sample-node
 
