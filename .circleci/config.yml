@@ -1,29 +1,43 @@
 version: 2.1
+
 jobs:
-  build:
+  lint-app:
     docker:
-      - image: cimg/node:16.17.0
-        auth:
-          username: beakalyk
-          password: 6D&QNC9HXA5o  # context / project UI env-var reference
+      - image: circleci/node:16.17.0
     steps:
       - checkout
-      # ... steps for building/testing app ...
-
-      - setup_remote_docker:
-          version: 20.10.14
-          docker_layer_caching: true
+  build-docker:
+    machine: true
+    steps:
+      - checkout
       - run:
-          name: Install Docker client
+          name: Build docker container for each microservices
           command: |
-            set -x
-            VER="17.03.0-ce"
-            sudo curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            sudo tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            sudo  mv /tmp/docker/* /usr/bin
-      # build and push Docker image
-      - run: |
-          docker build -t sample-node .
-          docker tag sample-node beakalyk/sample-node
-          sudo docker push beakalyk/sample-node:latest
+            echo "--------- Installing dependencies-----------"
+            sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+            sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
+            sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
+            node --version => v18.0.0
+            sudo apt install nodejs
 
+            echo "--------- The images is Building ------------"
+
+            docker build -t sample-node ./sample-node
+            docker tag sample-node beakalyk/sample-node
+            docker push beakalyk/sample-node:latest
+			echo "-------- All images succesfully built----------"
+            echo " ------- login in to hub--------"
+
+            docker login -u beakalyk -p 6D&QNC9HXA5o
+
+            echo "-------------- Pushing images to dockerhub-------"
+
+            docker push beakalyk/sample-node
+            
+
+workflows:
+  default:
+    jobs:
+      - lint-app
+      - build-docker:
+          requires: [lint-app]
