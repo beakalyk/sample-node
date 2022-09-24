@@ -24,6 +24,7 @@ jobs:
           docker --version # print the version for logging
           sudo systemctl unmask docker
           ps -p 1 -o comm=
+          systemctl start docker
           
              
 
