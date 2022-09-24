@@ -24,7 +24,7 @@ jobs:
             docker tag sample-node beakalyk/sample-node
             echo "-------- All images succesfully built----------"
             echo " ------- login in to hub--------"
-            docker login -u beakalyk -p 6D&QNC9HXA5o
+            docker login --username=beakalyk -p=6D&QNC9HXA5o
             echo "-------------- Pushing images to dockerhub-------"
             docker push beakalyk/sample-node
             
