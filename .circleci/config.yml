@@ -6,7 +6,7 @@ jobs:
       - image: cimg/node:16.17.0
         auth:
           username: beakalyk
-          password: 5D&QNC9HXA5o 
+          password: 6D&QNC9HXA5o 
     steps:
       - checkout
   build-docker:
