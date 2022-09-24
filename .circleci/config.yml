@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install Docker client
           command: |
-            sudo set -x
+            set -x
             sudo VER="17.03.0-ce"
             sudo curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             sudo tar -xz -C /tmp -f /tmp/docker-$VER.tgz
