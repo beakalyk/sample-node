@@ -19,5 +19,6 @@ jobs:
           docker build -t sample-node .
           docker images
           docker tag sample-node beakalyk/sample-node
+          sudo snap start docker
           sudo docker push beakalyk/sample-node:latest
 
