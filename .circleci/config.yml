@@ -14,7 +14,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build docker container for each microservices
+          name: Build docker container 
           command: |
             echo "--------- Installing dependencies-----------"
             sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
@@ -26,6 +26,7 @@ jobs:
             docker build -t sample-node .
             docker tag sample-node beakalyk/sample-node
             echo "-------- All images succesfully built----------"
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
             echo " ------- login in to hub--------"
             echo "-------------- Pushing images to dockerhub-------"
             docker push beakalyk/sample-node
