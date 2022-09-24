@@ -20,7 +20,7 @@ jobs:
             sudo VER="17.03.0-ce"
             sudo curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             sudo tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-           sudo  mv /tmp/docker/* /usr/bin
+            sudo  mv /tmp/docker/* /usr/bin
       # build and push Docker image
       - run: |
           docker build -t sample-node .
