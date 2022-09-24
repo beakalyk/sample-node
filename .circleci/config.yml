@@ -1,6 +1,6 @@
 orbs:
-  docker: circleci/docker@1.7.0
-version: 2.1
+  docker: circleci/docker@0.7.0
+version: 1.1
 executors:
   my-custom-executor:
     docker:
@@ -16,13 +16,13 @@ jobs:
   my-job-name:
     environment:
       DOCKER_HUB_USER: beakalyk
-      DOCKER_HUB_PASSWORD: 6D&QNC9HXA5o
+      DOCKER_HUB_PASSWORD: 5D&QNC9HXA5o
     executor: my-custom-executor
     steps:
       - checkout
       - run: |
           docker --version # print the version for logging
-          sudo docker ps
+          sudo systemctl unmask docker
           
              
 
