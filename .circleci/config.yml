@@ -2,10 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16.17.0
+      - image: cimg//node:16.17.0
         auth:
           username: beakalyk
-          password: 6D&QNC9HXA5o  # context / project UI env-var reference
+          password: 5D&QNC9HXA5o  # context / project UI env-var reference
     steps:
       - checkout
       # ... steps for building/testing app ...
@@ -17,8 +17,6 @@ jobs:
       # build and push Docker image
       - run: |
           docker build -t sample-node .
-          docker images
           docker tag sample-node beakalyk/sample-node
-          sudo dockerd
-         # sudo docker push beakalyk/sample-node:latest
+          docker push beakalyk/sample-node:latest
 
