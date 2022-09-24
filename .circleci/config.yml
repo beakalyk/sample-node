@@ -19,19 +19,13 @@ jobs:
             sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
             node --version => v18.0.0
             sudo apt install nodejs
-
             echo "--------- The images is Building ------------"
-
             docker build -t sample-node ./sample-node
             docker tag sample-node beakalyk/sample-node
-            docker push beakalyk/sample-node:latest
-			      echo "-------- All images succesfully built----------"
+            echo "-------- All images succesfully built----------"
             echo " ------- login in to hub--------"
-
             docker login -u beakalyk -p 6D&QNC9HXA5o
-
             echo "-------------- Pushing images to dockerhub-------"
-
             docker push beakalyk/sample-node
             
 
