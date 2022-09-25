@@ -14,12 +14,6 @@ jobs:
       - run:
           name: Build docker container 
           command: |
-            echo "--------- Installing dependencies-----------"
-            sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
-            sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
-            sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
-            node --version => v18.0.0
-            sudo apt install nodejs
             echo "--------- The images is Building ------------"
             docker build -t sample-node .
             docker tag sample-node beakalyk/sample-node
