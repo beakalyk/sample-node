@@ -4,9 +4,7 @@ jobs:
   lint-app:
     docker:
       - image: cimg/node:16.17.0
-        auth:
-          username: $DOCKER_HUB_USER
-          password: 6D&QNC9HXA5o 
+        
     steps:
       - checkout
   build-docker:
